@@ -43,4 +43,5 @@ def merge_mriqc_derivatives(source_dir, target_dir):
             new_df = pd.read_csv(csv_file)
             old_df = pd.read_csv(out_file)
             out_df = pd.concat((old_df, new_df))
-            out_df.to_csv(out_file, line_terminator='\n', index=False)
+            out_df.to_csv(out_file, line_terminator='\n', na_rep='n/a',
+                          index=False)

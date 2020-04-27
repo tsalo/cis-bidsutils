@@ -48,7 +48,7 @@ def merge_datasets(source_dset, target_dset, project_name, sub, ses=None):
             [new_participants_df, orig_participants_df])
         new_participants_df.to_csv(
             op.join(target_dset, 'participants.tsv'),
-            sep='\t', line_terminator='\n', index=False)
+            sep='\t', line_terminator='\n', na_rep='n/a', index=False)
     else:
         print('Subject/session already found in participants.tsv')
 
@@ -90,9 +90,10 @@ def merge_datasets(source_dset, target_dset, project_name, sub, ses=None):
         master_scans_df = master_scans_df.append(sub_scans_df)
         master_scans_df.to_csv(master_scans_file, sep='\t',
                                line_terminator='\n', index=False,
+                               na_rep='n/a',
                                columns=master_df_headers)
     else:
         tmp_df_headers = list(sub_scans_df)
         sub_scans_df.to_csv(
             master_scans_file, sep='\t', line_terminator='\n',
-            index=False, columns=tmp_df_headers)
+            na_rep='n/a', index=False, columns=tmp_df_headers)
