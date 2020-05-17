@@ -1,4 +1,5 @@
 import re
+import os
 import os.path as op
 import shutil
 
@@ -31,7 +32,7 @@ def fix_runs(layout):
     files = layout.get()
     for f in files:
         out_fname = re.sub(RUN_REGEX, RUN_OUT_REGEX, f.path)
-        rename(f.path, out_fname)
+        os.rename(f.path, out_fname)
 
 
 def merge_datasets(source_dset, target_dset, project_name, sub, ses=None):
