@@ -17,7 +17,8 @@ def fix_runs(layout):
     """
     RUN_REGEX = r'(_run-)[0]+(\d+_)'
     RUN_OUT_REGEX = r'\1\2'
-    # Rename files in field-map jsons
+
+    # Rename contents of text files
     text_files = layout.get(extension=['json', 'tsv'])
     for f in text_files:
         with open(f, 'r') as fo:
